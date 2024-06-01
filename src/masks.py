@@ -34,11 +34,14 @@ print(masked_card_number)
 
 
 def convert_date(date_str):
+    """Принимает на вход строку и преобразует её в дату"""
     date_parts = date_str.split("T")[0].split("-")
     year = date_parts[0]
     month = date_parts[1]
     day = date_parts[2]
     return f"{day}.{month}.{year}"
+
+
 date_str = input("Введите дату: ")
 converted_date = convert_date(date_str)
 print(converted_date)
