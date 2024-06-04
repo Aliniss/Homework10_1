@@ -1,42 +1,47 @@
 def mask_card_number(card_number: str) -> str:
-    """Принимает на вход номер карты и возвращает маску."""
+    """Принимает на вход номер карты или счета и возвращает маску."""
 
-    # Проверяем, что длина номера карты больше или равна 10 (4 цифры видны, 6 цифр скрыты)
-    if len(card_number) < 10:
-        print("Недостаточно цифр. Добавьте 10 или более цифр в номер карты.")
-        return card_number
+#   Проверяем тип карты
+    if "Visa Classic" in card_number:
+        masked_number = card_number[:17] + " " + card_number[18:20] + "** **** " + card_number[-4:]
+        return masked_number
+    elif "Visa Platinum" in card_number:
+        masked_number = card_number[:18] + " " + card_number[20:22] + "** **** " + card_number[-4:]
+        return masked_number
+    elif "Visa Gold" in card_number:
+        masked_number = card_number[:14] + " " + card_number[15:17] + "** **** " + card_number[-4:]
+        return masked_number
+    elif "Maestro" in card_number:
+        masked_number = card_number[:12] + " " + card_number[13:15] + "** **** " + card_number[-4:]
+        return masked_number
+    elif "MasterCard" in card_number:
+        masked_number = card_number[:16] + " " + card_number[16:18] + "** **** " + card_number[-4:]
+        return masked_number
+    elif "Maestro" in card_number:
+        masked_number = card_number[:12] + " " + card_number[13:15] + "** **** " + card_number[-4:]
+        return masked_number
+    elif "Счет" in card_number:
+        masked_account = card_number[:4] + " " + "**" + card_number[-4:]
+        return masked_account
 
-    # Удаляем пробелы из номера карты
-    card_number = card_number.replace(" ", "")
 
-    # Заменяем цифры в середине на "**"
-    masked_number = card_number[:4] + " " + card_number[4:6] + "** **** " + card_number[-4:]
-
-    return masked_number
-
-
-input_card_number = input("Введите номер карты: ")
+print("Здравствуйте, введите номер и тип карты или счета.")
+print("Пример ввода для карты: Visa Platinum 1111 1111 1111 1111")
+print("Пример ввода для счета: Счет 11111111111111111111")
+input_card_number = input("Введите ваши данные: ")
 masked_card_number = mask_card_number(input_card_number)
 print(masked_card_number)
 
 
-def mask_account_number(account_number: str) -> str:
-    """Принимает на вход номер счёта и возвращает маску."""
-
-    # Проверяем, что длина номера счета больше или равна 4 (все остальные цифры скрыты)
-    if len(account_number) < 4:
-        print("Недостаточно цифр. Добавьте 4 или более цифры в номер счета.")
-        return account_number
-
-    # Удаляем пробелы из номера счета
-    account_number = account_number.replace(" ", "")
-
-    # Оставляем только последние 4 цифры
-    masked_number = "**" + account_number[-4:]
-
-    return masked_number
+def convert_date(date_str):
+    """Принимает на вход строку и преобразует её в дату"""
+    date_parts = date_str.split("T")[0].split("-")
+    year = date_parts[0]
+    month = date_parts[1]
+    day = date_parts[2]
+    return f"{day}.{month}.{year}"
 
 
-input_account_number = input("Введите номер счета: ")
-masked_account_number = mask_account_number(input_account_number)
-print(masked_account_number)
+date_str = input("Введите дату: ")
+converted_date = convert_date(date_str)
+print(converted_date)
