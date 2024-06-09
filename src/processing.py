@@ -25,13 +25,13 @@ filtered_data = filter_by_state(data, state)
 print(filtered_data)
 
 
-def sort_dict_list(dict_list: List[Dict[str, Any]], order: str = 'desc') -> List[Dict[str, Any]]:
+def sort_by_date(dict_list: List[Dict[str, Any]], order: bool = True) -> List[Dict[str, Any]] | bool:
     """
 Функция sort_dict_list сортирует список словарей по указанному порядку.
 
 Args:
 dict_list: список словарей, который требуется отсортировать
-order: порядок сортировки ('asc' - по возрастанию, 'desc' - по убыванию). По умолчанию 'desc'.
+order: порядок сортировки ('True' - по возрастанию, 'False' - по убыванию). По умолчанию 'True'.
 
 """
     return sorted(dict_list, key=lambda x: x['date'], reverse=(order == 'desc'))
@@ -41,7 +41,7 @@ order: порядок сортировки ('asc' - по возрастанию,
 input_list: List[Dict[str, Any]] = eval(input())
 
 #Ввод порядка сортировки
-order_input: str = input("Введите 'asc' для сортировки по возрастанию или 'desc' для сортировки по убыванию: ")
+order_input: bool = bool(input("Введите 'True' для сортировки по возрастанию или 'False' для сортировки по убыванию: "))
 
-sorted_list = sort_dict_list(input_list, order_input)
+sorted_list = sort_by_date(input_list, order_input)
 print(sorted_list)
