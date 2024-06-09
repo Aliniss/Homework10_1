@@ -1,5 +1,10 @@
-def mask_card_number(card_number: str) -> str:
-    """Принимает на вход номер карты или счета и возвращает маску."""
+def mask_card_number(card_number: str) -> str | None:
+    """
+Функция принимает на вход номер кредитной карты в виде строки и возвращает строку с маскированным номером.
+
+Args:
+card_number: str - номер кредитной карты
+"""
 
 #   Проверяем тип карты
     if "Visa Classic" in card_number:
@@ -23,6 +28,7 @@ def mask_card_number(card_number: str) -> str:
     elif "Счет" in card_number:
         masked_account = card_number[:4] + " " + "**" + card_number[-4:]
         return masked_account
+    return None
 
 
 print("Здравствуйте, введите номер и тип карты или счета.")
@@ -33,8 +39,13 @@ masked_card_number = mask_card_number(input_card_number)
 print(masked_card_number)
 
 
-def convert_date(date_str):
-    """Принимает на вход строку и преобразует её в дату"""
+def convert_date(date_str: str) -> str:
+    """
+    Принимает на вход строку и преобразует её в дату
+
+    Args:
+    date_str (str): строка с датой
+    """
     date_parts = date_str.split("T")[0].split("-")
     year = date_parts[0]
     month = date_parts[1]
