@@ -25,7 +25,7 @@ filtered_data = filter_by_state(data, state)
 print(filtered_data)
 
 
-def sort_by_date(dict_list: List[Dict[str, Any]], order: bool = True) -> List[Dict[str, Any]] | bool:
+def sort_by_date(dict_list: List, order: bool = True) -> List | bool:
     """
 Функция sort_dict_list сортирует список словарей по указанному порядку.
 
@@ -34,7 +34,7 @@ dict_list: список словарей, который требуется от
 order: порядок сортировки ('True' - по возрастанию, 'False' - по убыванию). По умолчанию 'True'.
 
 """
-    return sorted(dict_list, key=lambda x: x['date'], reverse=(order == 'desc'))
+    return sorted(dict_list, key=lambda x: x['date'], reverse=order)
 
 
 #Ввод списка словарей
