@@ -12,36 +12,7 @@ state (str): состояние, по которому необходимо от
     return [d for d in data if d.get('state') == state]
 
 
-# Считываем список словарей со стандартного ввода
-data = eval(input())
-
-# Считываем значение для ключа state
-state = input('Введите значение для ключа state (по умолчанию EXECUTED): ')
-
-# Фильтруем список словарей
-filtered_data = filter_by_state(data, state)
-
-# Выводим результат
-print(filtered_data)
-
-
-def sort_by_date(dict_list: List, order: bool = True) -> List | bool:
-    """
-Функция sort_dict_list сортирует список словарей по указанному порядку.
-
-Args:
-dict_list: список словарей, который требуется отсортировать
-order: порядок сортировки ('True' - по возрастанию, 'False' - по убыванию). По умолчанию 'True'.
-
-"""
-    return sorted(dict_list, key=lambda x: x['date'], reverse=order)
-
-
-#Ввод списка словарей
-input_list: List[Dict[str, Any]] = eval(input())
-
-#Ввод порядка сортировки
-order_input: bool = bool(input("Введите 'True' для сортировки по возрастанию или 'False' для сортировки по убыванию: "))
-
-sorted_list = sort_by_date(input_list, order_input)
-print(sorted_list)
+def sort_by_date(date_list: list, reverse_list: bool = True) -> list | bool:
+    """Return filtered list by date"""
+    sorted_list = sorted(date_list, key=lambda date_dict: date_dict.get("date"), reverse=reverse_list)
+    return sorted_list
