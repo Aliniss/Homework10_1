@@ -24,6 +24,9 @@ git clone https://github.com/Aliniss/Homework.git
 Функция convert_date принимает на вход строку и преобразует её в дату.
 Функция sort_by_date сортирует список словарей по указанному порядку.
 Функция filter_by_state фильтрует данные по указанному состоянию.
+Функция filter_by_currency фильтрует транзакции по типу валюты.
+Функция transaction_descriptions показывает действия над счетами.
+Функция card_number_generator генерирует номера карт.
 
 ## Тестирование:
 
