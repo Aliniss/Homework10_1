@@ -27,6 +27,7 @@ git clone https://github.com/Aliniss/Homework.git
 Функция filter_by_currency фильтрует транзакции по типу валюты.
 Функция transaction_descriptions показывает действия над счетами.
 Функция card_number_generator генерирует номера карт.
+В проекте реализованы декораторы и их тестирование.
 
 ## Тестирование:
 
