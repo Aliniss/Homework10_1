@@ -6,12 +6,12 @@ Args:
 card_number: str - номер кредитной карты
 """
 
-#   Проверяем тип карты
+    #   Проверяем тип карты
     if "Visa Classic" in card_number:
         masked_number = card_number[:17] + " " + card_number[18:20] + "** **** " + card_number[-4:]
         return masked_number
     elif "Visa Platinum" in card_number:
-        masked_number = card_number[:18] + " " + card_number[20:22] + "** **** " + card_number[-4:]
+        masked_number = card_number[:18] + " " + card_number[19:21] + "** **** " + card_number[-4:]
         return masked_number
     elif "Visa Gold" in card_number:
         masked_number = card_number[:14] + " " + card_number[15:17] + "** **** " + card_number[-4:]
@@ -31,14 +31,6 @@ card_number: str - номер кредитной карты
     return None
 
 
-print("Здравствуйте, введите номер и тип карты или счета.")
-print("Пример ввода для карты: Visa Platinum 1111 1111 1111 1111")
-print("Пример ввода для счета: Счет 11111111111111111111")
-input_card_number = input("Введите ваши данные: ")
-masked_card_number = mask_card_number(input_card_number)
-print(masked_card_number)
-
-
 def convert_date(date_str: str) -> str:
     """
     Принимает на вход строку и преобразует её в дату
@@ -51,8 +43,3 @@ def convert_date(date_str: str) -> str:
     month = date_parts[1]
     day = date_parts[2]
     return f"{day}.{month}.{year}"
-
-
-date_str = input("Введите дату: ")
-converted_date = convert_date(date_str)
-print(converted_date)
