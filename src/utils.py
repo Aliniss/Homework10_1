@@ -3,7 +3,6 @@ from json import JSONDecodeError
 import logging
 import pandas as pd
 
-
 logger = logging.getLogger("utils")
 logger.setLevel(logging.INFO)
 file_handler = logging.FileHandler("logs/utils.log", mode='w')
@@ -34,11 +33,19 @@ if __name__ == "__main__":
     print(transactions)
 
 
-def read_csv(file_path):
-    """Считывает данные из CSV файла и возвращает DataFrame."""
-    return pd.read_csv(file_path)
+def get_xlsx_file(filepath: str) -> dict:
+    """
+    Реализовывает считывание финансовых операций с XLSX-файлов
+    """
+    reviews = pd.read_excel(filepath)
+    filepath_dict = reviews.to_dict()
+    return filepath_dict
 
 
-def read_xlsx(file_path):
-    """Считывает данные из XLSX файла и возвращает DataFrame."""
-    return pd.read_excel(file_path, engine="openpyxl")
+def get_csv_file(filepath: str) -> dict:
+    """
+    Реализовывает считывание финансовых операций с CSV-файлов
+    """
+    reviews = pd.read_csv(filepath, sep=";")
+    filepath_dict = reviews.to_dict()
+    return filepath_dict
