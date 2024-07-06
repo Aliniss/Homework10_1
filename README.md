@@ -28,6 +28,7 @@ git clone https://github.com/Aliniss/Homework.git
 Функция transaction_descriptions показывает действия над счетами.
 Функция card_number_generator генерирует номера карт.
 В проекте реализованы декораторы и их тестирование.
+В проекте реалзовано логирование.
 
 ## Тестирование:
 
