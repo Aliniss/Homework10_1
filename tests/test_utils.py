@@ -1,8 +1,9 @@
 import unittest
 from json.decoder import JSONDecodeError
 from unittest.mock import mock_open, patch
+from pandas import DataFrame
 
-from src.utils import get_json_transactions
+from src.utils import get_json_transactions, get_xlsx_file, get_csv_file
 
 
 class TestGetJsonTransactions(unittest.TestCase):
@@ -23,3 +24,15 @@ class TestGetJsonTransactions(unittest.TestCase):
         self.assertEqual(result, [])
         mock_open.assert_called_once_with("dummy_path.json", "r", encoding="utf-8")
         mock_json_loads.assert_called_once()
+
+
+@patch('pandas.read_excel')
+def test_get_xlsx_file(mock_read_excel):
+    mock_read_excel.return_value = DataFrame({"key": ["value"]})
+    assert get_xlsx_file('test.xlsx') == {'key': {0: 'value'}}
+
+
+@patch('pandas.read_csv')
+def test_get_csv_file(mock_read_excel):
+    mock_read_excel.return_value = DataFrame({"key": ["value"]})
+    assert get_csv_file('test.csv') == {'key': {0: 'value'}}

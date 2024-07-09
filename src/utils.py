@@ -1,6 +1,7 @@
 import json
 from json import JSONDecodeError
 import logging
+import pandas as pd
 
 logger = logging.getLogger("utils")
 logger.setLevel(logging.INFO)
@@ -30,3 +31,21 @@ if __name__ == "__main__":
     file_path = r"C:\Users\Azerty\PycharmProjects\Homework\data\operations.json"
     transactions = get_json_transactions(file_path)
     print(transactions)
+
+
+def get_xlsx_file(filepath: str) -> dict:
+    """
+    Реализовывает считывание финансовых операций с XLSX-файлов
+    """
+    reviews = pd.read_excel(filepath)
+    filepath_dict = reviews.to_dict()
+    return filepath_dict
+
+
+def get_csv_file(filepath: str) -> dict:
+    """
+    Реализовывает считывание финансовых операций с CSV-файлов
+    """
+    reviews = pd.read_csv(filepath, sep=";")
+    filepath_dict = reviews.to_dict()
+    return filepath_dict
