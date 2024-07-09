@@ -14,7 +14,7 @@ def masked_card_num(num: str) -> str:
     """
     logger.info(f"start masked_card_num {num}")
     number = 4
-    result = num[:number] + " " + num[number : number + 2] + "** ****" + " " + num[number + 8 :]
+    result = num[:number] + " " + num[number: number + 2] + "** ****" + " " + num[number + 8:]
     logger.info(f"mask {result}")
     return result
 
